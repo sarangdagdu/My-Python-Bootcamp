@@ -22,3 +22,26 @@ ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
 ''')
 print("Welcome to Treasure Island.")
 print("Your mission is to find the treasure.")
+
+direction = input("You are at the start and you need to choose a either left or right to start\n").lower()
+if direction == "left":
+    print("Good Choice!\n")
+    swim = input("You\'re across a river and there is no boat to take to to the other side. "
+                 "Do you want to wait here for someone to arrive or you want to swim across?\n").lower()
+    if swim == "wait":
+        print("A boat came by and dropped at the doorstep of a creepy gateway.\n")
+        door = input("There are 3 doors in front of you. Red, Blue and Yellow. One of these have the treasure."
+                     " Make your choice\n").lower()
+
+        if door == "yellow":
+            print("You made it! Now Break open the box and enjoy!\n")
+        elif door == "red":
+            print("A Dragon smoked you alive!\n")
+        else:
+            print("You were attacked by wolves! Bye Bye\n")
+
+    else:
+        print("You served yourself as breakfast to a hungry Shark! Sorry!\n")
+
+else:
+    print("Oops! You stepped on a landmine blowing up the island!\n")

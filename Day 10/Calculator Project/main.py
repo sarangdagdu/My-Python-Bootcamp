@@ -1,3 +1,5 @@
+import art
+
 def add(n1, n2):
     return n1 + n2
 
@@ -14,29 +16,30 @@ operations = { "+":add,"-":subtract,"*":multiply,"/":divide}
 
 # print(operations["*"](5,4))
 
-should_continue = True
-num_1 = float(input("What's the first number?:\n"))
+def calculator():
+    print(art.logo)
+    should_accumulate = True
+    num1 = float(input("What is the first number?: "))
 
-while should_continue == True:
+    while should_accumulate:
+        for symbol in operations:
+            print(symbol)
+        operation_symbol = input("Pick an operation: ")
+        num2 = float(input("What is the next number?: "))
+        answer = operations[operation_symbol](num1, num2)
+        print(f"{num1} {operation_symbol} {num2} = {answer}")
 
-    operation = input("Pick an Operation:\n")
-    num_2 = float(input("What's the next number?:\n"))
+        choice = input(f"Type 'y' to continue calculating with {answer}, or type 'n' to start a new calculation: ")
 
-    result = operations[operation](num_1,num_2)
-    print(f"{num_1} {operation} {num_2} = {result}")
+        if choice == "y":
+            num1 = answer
+        else:
+            should_accumulate = False
+            print("\n" * 20)
+            calculator()
 
-    continue_prompt = input((f"Type 'y' to continue calculating with {result}, or type 'n' to start a new calculation:\n"))
 
-    if bool(continue_prompt) == True:
-        should_continue = False
-
-        operation = input("Pick an Operation:\n")
-        num_2 = float(input("What's the next number?:\n"))
-
-        temp_result = operations[operation](result,num_2)
-        print(f"{result} {operation} {num_2} = {temp_result}")
-    else:
-        print("\n*50")
+calculator()
 
 
 
